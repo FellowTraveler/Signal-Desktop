@@ -161,6 +161,7 @@ export const SmartTimelineItem = memo(function SmartTimelineItem(
     markAttachmentAsCorrupted,
     messageExpanded,
     onPinnedMessageRemove,
+    openAttachmentInDefaultApp,
     openGiftBadge,
     retryDeleteForEveryone,
     retryMessageSend,
@@ -293,6 +294,7 @@ export const SmartTimelineItem = memo(function SmartTimelineItem(
       sendPollVote={sendPollVote}
       renderItem={renderItem}
       returnToActiveCall={returnToActiveCall}
+      openAttachmentInDefaultApp={openAttachmentInDefaultApp}
       saveAttachment={saveAttachment}
       saveAttachments={saveAttachments}
       scrollToPollMessage={scrollToPollMessage}

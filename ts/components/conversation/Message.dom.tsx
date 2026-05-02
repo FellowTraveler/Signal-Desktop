@@ -22,6 +22,7 @@ import type { ReadonlyDeep } from 'type-fest';
 import type {
   ConversationType,
   ConversationTypeType,
+  OpenAttachmentInDefaultAppActionCreatorType,
   PushPanelForConversationActionType,
   SaveAttachmentActionCreatorType,
   SaveAttachmentsActionCreatorType,
@@ -374,6 +375,7 @@ export type PropsActions = {
     attachment: AttachmentType;
     messageId: string;
   }) => void;
+  openAttachmentInDefaultApp: OpenAttachmentInDefaultAppActionCreatorType;
   saveAttachment: SaveAttachmentActionCreatorType;
   saveAttachments: SaveAttachmentsActionCreatorType;
   showLightbox: (options: {
@@ -3254,7 +3256,7 @@ export class Message extends PureComponent<Props, State> {
     const {
       id,
       attachments,
-      saveAttachment,
+      openAttachmentInDefaultApp,
       timestamp,
       kickOffAttachmentDownload,
       attachmentDroppedDueToSize,
@@ -3287,7 +3289,7 @@ export class Message extends PureComponent<Props, State> {
         messageId: id,
       });
     } else {
-      saveAttachment(firstAttachment, timestamp);
+      openAttachmentInDefaultApp(firstAttachment, timestamp);
     }
   };
 
