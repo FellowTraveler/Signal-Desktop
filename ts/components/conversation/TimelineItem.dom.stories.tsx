@@ -75,6 +75,7 @@ const getDefaultProps = () => ({
   messageExpanded: action('messageExpanded'),
   showConversation: action('showConversation'),
   openGiftBadge: action('openGiftBadge'),
+  dragAttachment: action('dragAttachment'),
   openAttachmentInDefaultApp: action('openAttachmentInDefaultApp'),
   saveAttachment: action('saveAttachment'),
   saveAttachments: action('saveAttachments'),
