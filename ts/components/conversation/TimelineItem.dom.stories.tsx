@@ -76,6 +76,7 @@ const getDefaultProps = () => ({
   showConversation: action('showConversation'),
   openGiftBadge: action('openGiftBadge'),
   dragAttachment: action('dragAttachment'),
+  cleanupDragAttachment: action('cleanupDragAttachment'),
   openAttachmentInDefaultApp: action('openAttachmentInDefaultApp'),
   saveAttachment: action('saveAttachment'),
   saveAttachments: action('saveAttachments'),

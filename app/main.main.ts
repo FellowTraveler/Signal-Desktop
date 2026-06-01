@@ -3295,6 +3295,12 @@ ipc.on('start-attachment-drag', (event, filePath: string) => {
   event.sender.startDrag({ file: filePath, icon });
 });
 
+ipc.on('cleanup-drag-temp-file', (_event, filePath: string) => {
+  fsExtra.remove(filePath).catch(err => {
+    log.warn('Failed to cleanup drag temp file:', Errors.toLogFormat(err));
+  });
+});
+
 ipc.handle('show-save-dialog', async (_event, { defaultPath }) => {
   if (!mainWindow) {
     log.warn('show-save-dialog: no main window');

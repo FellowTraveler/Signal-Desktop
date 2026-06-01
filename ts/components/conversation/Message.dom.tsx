@@ -22,6 +22,7 @@ import type { ReadonlyDeep } from 'type-fest';
 import type {
   ConversationType,
   ConversationTypeType,
+  CleanupDragAttachmentActionCreatorType,
   DragAttachmentActionCreatorType,
   OpenAttachmentInDefaultAppActionCreatorType,
   PushPanelForConversationActionType,
@@ -377,6 +378,7 @@ export type PropsActions = {
     messageId: string;
   }) => void;
   dragAttachment: DragAttachmentActionCreatorType;
+  cleanupDragAttachment: CleanupDragAttachmentActionCreatorType;
   openAttachmentInDefaultApp: OpenAttachmentInDefaultAppActionCreatorType;
   saveAttachment: SaveAttachmentActionCreatorType;
   saveAttachments: SaveAttachmentsActionCreatorType;
@@ -1160,6 +1162,7 @@ export class Message extends PureComponent<Props, State> {
       cancelAttachmentDownload,
       direction,
       dragAttachment,
+      cleanupDragAttachment,
       expirationLength,
       expirationTimestamp,
       i18n,
@@ -1361,6 +1364,9 @@ export class Message extends PureComponent<Props, State> {
           if (isDraggable) {
             dragAttachment(firstAttachment, timestamp);
           }
+        }}
+        onDragEnd={() => {
+          cleanupDragAttachment();
         }}
       >
       <button
