@@ -1,7 +1,6 @@
 // Copyright 2019 Signal Messenger, LLC
 // SPDX-License-Identifier: AGPL-3.0-only
 
-import { tmpdir } from 'node:os';
 import type { ThunkAction } from 'redux-thunk';
 import lodash from 'lodash';
 import { type PhoneNumber } from 'google-libphonenumber';
@@ -1238,7 +1237,6 @@ export const actions = {
   saveAttachments,
   saveAttachmentFromMessage,
   dragAttachment,
-  cleanupDragAttachment,
   openAttachmentInDefaultApp,
   saveAvatarToDisk,
   scrollToMessage,
@@ -4244,12 +4242,6 @@ export type DragAttachmentActionCreatorType = ReadonlyDeep<
   (attachment: AttachmentType, timestamp?: number) => unknown
 >;
 
-export type CleanupDragAttachmentActionCreatorType = ReadonlyDeep<
-  () => unknown
->;
-
-let lastDragTempPath: string | null = null;
-
 function dragAttachment(
   attachment: AttachmentType,
   timestamp = Date.now()
@@ -4264,22 +4256,7 @@ function dragAttachment(
       baseDir: TEMP_PATH,
     });
     if (fullPath) {
-      lastDragTempPath = fullPath;
       ipcRenderer.send('start-attachment-drag', fullPath);
-    }
-  };
-}
-
-function cleanupDragAttachment(): ThunkAction<
-  void,
-  RootStateType,
-  unknown,
-  ShowToastActionType
-> {
-  return () => {
-    if (lastDragTempPath) {
-      ipcRenderer.send('cleanup-drag-temp-file', lastDragTempPath);
-      lastDragTempPath = null;
     }
   };
 }
