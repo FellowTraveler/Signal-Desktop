@@ -4229,7 +4229,7 @@ function openAttachmentInDefaultApp(
       readAttachmentData,
       saveAttachmentToDisk,
       timestamp,
-      baseDir: tmpdir(),
+      baseDir: TEMP_PATH,
     });
 
     if (fullPath) {
