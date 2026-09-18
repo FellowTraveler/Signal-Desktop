@@ -100,6 +100,7 @@ export type PropsReduxActions = Pick<
   | 'retryMessageSend'
   | 'sendPollVote'
   | 'dragAttachment'
+  | 'openAttachmentInDefaultApp'
   | 'saveAttachment'
   | 'saveAttachments'
   | 'showContactModal'
@@ -153,6 +154,7 @@ export function MessageDetail({
   sendPollVote,
   renderAudioAttachment,
   dragAttachment,
+  openAttachmentInDefaultApp,
   saveAttachment,
   saveAttachments,
   showContactModal,
@@ -214,6 +216,7 @@ export function MessageDetail({
               sendPollVote={sendPollVote}
               renderAudioAttachment={renderAudioAttachment}
               dragAttachment={dragAttachment}
+              openAttachmentInDefaultApp={openAttachmentInDefaultApp}
               saveAttachment={saveAttachment}
               saveAttachments={saveAttachments}
               shouldCollapseAbove={false}

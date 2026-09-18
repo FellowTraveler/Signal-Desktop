@@ -65,6 +65,7 @@ const MESSAGE_DEFAULT_PROPS = {
   renderAudioAttachment: () => <div />,
   renderingContext: 'EditHistoryMessagesModal' as const,
   dragAttachment: noop,
+  openAttachmentInDefaultApp: noop,
   saveAttachment: shouldNeverBeCalled,
   saveAttachments: shouldNeverBeCalled,
   scrollToQuotedMessage: shouldNeverBeCalled,

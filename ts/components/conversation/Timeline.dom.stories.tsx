@@ -288,6 +288,7 @@ const actions = () => ({
   retryMessageSend: action('retryMessageSend'),
   sendPollVote: action('sendPollVote'),
   dragAttachment: action('dragAttachment'),
+  openAttachmentInDefaultApp: action('openAttachmentInDefaultApp'),
   saveAttachment: action('saveAttachment'),
   saveAttachments: action('saveAttachments'),
   pushPanelForConversation: action('pushPanelForConversation'),

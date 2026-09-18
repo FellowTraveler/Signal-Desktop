@@ -94,6 +94,7 @@ export default {
     openGiftBadge: action('openGiftBadge'),
     renderAudioAttachment: () => <div>AudioAttachment</div>,
     dragAttachment: action('dragAttachment'),
+    openAttachmentInDefaultApp: action('openAttachmentInDefaultApp'),
     saveAttachment: action('saveAttachment'),
     showSpoiler: action('showSpoiler'),
     retryMessageSend: action('retryMessageSend'),

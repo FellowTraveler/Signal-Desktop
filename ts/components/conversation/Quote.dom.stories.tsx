@@ -135,6 +135,7 @@ const defaultMessageProps: TimelineMessagesProps = {
   copyMessageText: action('copyMessageText'),
   retryDeleteForEveryone: action('default--retryDeleteForEveryone'),
   dragAttachment: action('dragAttachment'),
+  openAttachmentInDefaultApp: action('openAttachmentInDefaultApp'),
   saveAttachment: action('saveAttachment'),
   saveAttachments: action('saveAttachments'),
   scrollToQuotedMessage: action('default--scrollToQuotedMessage'),
