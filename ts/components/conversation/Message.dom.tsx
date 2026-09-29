@@ -3280,7 +3280,9 @@ export class Message extends PureComponent<Props, State> {
       !isAttachmentPending &&
       canDisplayImage(attachments) &&
       ((isImage(attachments) && hasImage(attachments)) ||
-        (isVideo(attachments) && hasVideoScreenshot(attachments)))
+        (isVideo(attachments) &&
+          (hasVideoScreenshot(attachments) ||
+            Boolean(attachments[0]?.path || attachments[0]?.url))))
     ) {
       event.preventDefault();
       event.stopPropagation();

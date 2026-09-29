@@ -548,3 +548,31 @@ describe('Attachment', () => {
     });
   });
 });
+
+describe('Attachment.canDisplayImage', () => {
+  it('allows downloaded videos without measured dimensions', () => {
+    assert.isTrue(
+      Attachment.canDisplayImage([
+        fakeAttachment({
+          contentType: MIME.VIDEO_QUICKTIME,
+          path: 'ab/cd.mov',
+          width: undefined,
+          height: undefined,
+        }),
+      ])
+    );
+  });
+
+  it('still requires dimensions for images', () => {
+    assert.isFalse(
+      Attachment.canDisplayImage([
+        fakeAttachment({
+          contentType: MIME.IMAGE_JPEG,
+          path: 'ab/cd.jpg',
+          width: undefined,
+          height: undefined,
+        }),
+      ])
+    );
+  });
+});

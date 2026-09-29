@@ -235,8 +235,24 @@ export function isAudio(attachments?: ReadonlyArray<AttachmentType>): boolean {
 export function canDisplayImage(
   attachments?: ReadonlyArray<AttachmentType>
 ): boolean {
-  const { height, width } =
-    attachments && attachments[0] ? attachments[0] : { height: 0, width: 0 };
+  const attachment = attachments?.[0];
+  if (!attachment) {
+    return false;
+  }
+
+  const { height = 0, width = 0 } = attachment;
+
+  // Downloaded videos without measured dimensions (e.g. a .mov that used to be
+  // treated as a generic file) can still use timeline default sizing and play
+  // in the lightbox from the attachment URL.
+  if (
+    isVideoAttachment(attachment) &&
+    Boolean(attachment.path || attachment.url || attachment.downloadPath)
+  ) {
+    if (!height || !width) {
+      return true;
+    }
+  }
 
   return Boolean(
     height &&
